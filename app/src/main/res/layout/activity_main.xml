@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:weightSum="3"
     android:orientation="vertical"
     tools:context=".MainActivity">
@@ -53,53 +53,100 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="6dp"
             android:layout_weight="1"
             android:weightSum="4">
 
-            <TextView
-                android:id="@+id/seven_tv"
+
+            <com.andexert.library.RippleView
+                android:id="@+id/ripple"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:layout_margin="5dp"
+                app:rv_rippleDuration="200"
+                app:rv_ripplePadding="6dp"
+                rv_centered="true">
+
+            <TextView
+                android:id="@+id/seven_tv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:gravity="center"
                 android:textSize="20sp"
                 android:textColor="#fff"
                 android:fontFamily="sans-serif-light"
                 android:text="7"/>
 
-            <TextView
-                android:id="@+id/four_tv"
+            </com.andexert.library.RippleView>
+
+
+            <com.andexert.library.RippleView
+                android:id="@+id/ripple2"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:gravity="center"
-                android:textSize="20sp"
-                android:textColor="#fff"
-                android:fontFamily="sans-serif-light"
-                android:text="4"/>
+                android:layout_margin="5dp"
+                app:rv_rippleDuration="200"
+                app:rv_ripplePadding="6dp"
+                rv_centered="true">
 
-            <TextView
-                android:id="@+id/one_tv"
+                <TextView
+                    android:id="@+id/four_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textColor="#fff"
+                    android:fontFamily="sans-serif-light"
+                    android:text="4"/>
+
+            </com.andexert.library.RippleView>
+
+
+            <com.andexert.library.RippleView
+                android:id="@+id/ripple3"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:gravity="center"
-                android:textSize="20sp"
-                android:textColor="#fff"
-                android:fontFamily="sans-serif-light"
-                android:text="1"/>
+                android:layout_margin="5dp"
+                app:rv_rippleDuration="200"
+                app:rv_ripplePadding="6dp"
+                rv_centered="true">
 
-            <TextView
-                android:id="@+id/delete_tv"
+                <TextView
+                    android:id="@+id/one_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textColor="#fff"
+                    android:fontFamily="sans-serif-light"
+                    android:text="1"/>
+
+            </com.andexert.library.RippleView>
+
+
+            <com.andexert.library.RippleView
+                android:id="@+id/ripple4"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
-                android:layout_height="00dp"
-                android:gravity="center"
-                android:textSize="16sp"
-                android:textColor="#fff"
-                android:fontFamily="sans-serif-light"
-                android:text="DEL"/>
+                android:layout_height="0dp"
+                android:layout_margin="5dp"
+                app:rv_rippleDuration="200"
+                app:rv_ripplePadding="6dp"
+                rv_centered="true">
+
+                <TextView
+                    android:id="@+id/delete_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textSize="16sp"
+                    android:textColor="#fff"
+                    android:fontFamily="sans-serif-light"
+                    android:text="DEL"/>
+
+            </com.andexert.library.RippleView>
 
         </LinearLayout>
 
@@ -107,53 +154,97 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="6dp"
             android:layout_weight="1"
             android:weightSum="4">
 
-            <TextView
-                android:id="@+id/eight_tv"
+            <com.andexert.library.RippleView
+                android:id="@+id/ripple5"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:gravity="center"
-                android:textSize="20sp"
-                android:textColor="#fff"
-                android:fontFamily="sans-serif-light"
-                android:text="8"/>
+                android:layout_margin="5dp"
+                app:rv_rippleDuration="200"
+                app:rv_ripplePadding="6dp"
+                rv_centered="true">
 
-            <TextView
-                android:id="@+id/five_tv"
+                <TextView
+                    android:id="@+id/eight_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textColor="#fff"
+                    android:fontFamily="sans-serif-light"
+                    android:text="8"/>
+
+            </com.andexert.library.RippleView>
+
+            <com.andexert.library.RippleView
+                android:id="@+id/ripple6"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:gravity="center"
-                android:textSize="20sp"
-                android:textColor="#fff"
-                android:fontFamily="sans-serif-light"
-                android:text="5"/>
+                android:layout_margin="5dp"
+                app:rv_rippleDuration="200"
+                app:rv_ripplePadding="6dp"
+                rv_centered="true">
 
-            <TextView
-                android:id="@+id/two_tv"
+                <TextView
+                    android:id="@+id/five_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textColor="#fff"
+                    android:fontFamily="sans-serif-light"
+                    android:text="5"/>
+
+
+            </com.andexert.library.RippleView>
+
+            <com.andexert.library.RippleView
+                android:id="@+id/ripple7"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:gravity="center"
-                android:textSize="20sp"
-                android:textColor="#fff"
-                android:fontFamily="sans-serif-light"
-                android:text="2"/>
+                android:layout_margin="5dp"
+                app:rv_rippleDuration="200"
+                app:rv_ripplePadding="6dp"
+                rv_centered="true">
 
-            <TextView
-                android:id="@+id/zero_tv"
+                <TextView
+                    android:id="@+id/two_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textColor="#fff"
+                    android:fontFamily="sans-serif-light"
+                    android:text="2"/>
+
+            </com.andexert.library.RippleView>
+
+            <com.andexert.library.RippleView
+                android:id="@+id/ripple8"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
-                android:layout_height="00dp"
-                android:gravity="center"
-                android:textSize="20sp"
-                android:textColor="#fff"
-                android:fontFamily="sans-serif-light"
-                android:text="0"/>
+                android:layout_height="0dp"
+                android:layout_margin="5dp"
+                app:rv_rippleDuration="200"
+                app:rv_ripplePadding="6dp"
+                rv_centered="true">
+                <TextView
+                    android:id="@+id/zero_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textColor="#fff"
+                    android:fontFamily="sans-serif-light"
+                    android:text="0"/>
+
+            </com.andexert.library.RippleView>
+
 
         </LinearLayout>
 
@@ -161,53 +252,98 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="6dp"
             android:layout_weight="1"
             android:weightSum="4">
 
-            <TextView
-                android:id="@+id/nine_tv"
+            <com.andexert.library.RippleView
+                android:id="@+id/ripple9"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:gravity="center"
-                android:textSize="20sp"
-                android:textColor="#fff"
-                android:fontFamily="sans-serif-light"
-                android:text="9"/>
+                android:layout_margin="5dp"
+                app:rv_rippleDuration="200"
+                app:rv_ripplePadding="6dp"
+                rv_centered="true">
 
-            <TextView
-                android:id="@+id/six_tv"
+                <TextView
+                    android:id="@+id/nine_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textColor="#fff"
+                    android:fontFamily="sans-serif-light"
+                    android:text="9"/>
+
+            </com.andexert.library.RippleView>
+
+            <com.andexert.library.RippleView
+                android:id="@+id/ripple10"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:gravity="center"
-                android:textSize="20sp"
-                android:textColor="#fff"
-                android:fontFamily="sans-serif-light"
-                android:text="6"/>
+                android:layout_margin="5dp"
+                app:rv_rippleDuration="200"
+                app:rv_ripplePadding="6dp"
+                rv_centered="true">
 
-            <TextView
-                android:id="@+id/three_tv"
+                <TextView
+                    android:id="@+id/six_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textColor="#fff"
+                    android:fontFamily="sans-serif-light"
+                    android:text="6"/>
+
+
+            </com.andexert.library.RippleView>
+
+
+            <com.andexert.library.RippleView
+                android:id="@+id/ripple11"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:gravity="center"
-                android:textSize="20sp"
-                android:textColor="#fff"
-                android:fontFamily="sans-serif-light"
-                android:text="3"/>
+                android:layout_margin="5dp"
+                app:rv_rippleDuration="200"
+                app:rv_ripplePadding="6dp"
+                rv_centered="true">
 
-            <TextView
-                android:id="@+id/equal_tv"
+                <TextView
+                    android:id="@+id/three_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textColor="#fff"
+                    android:fontFamily="sans-serif-light"
+                    android:text="3"/>
+
+            </com.andexert.library.RippleView>
+
+            <com.andexert.library.RippleView
+                android:id="@+id/ripple12"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
-                android:layout_height="00dp"
-                android:gravity="center"
-                android:textSize="30sp"
-                android:textColor="#fff"
-                android:fontFamily="sans-serif-light"
-                android:text="="/>
+                android:layout_height="0dp"
+                android:layout_margin="5dp"
+                app:rv_rippleDuration="200"
+                app:rv_ripplePadding="6dp"
+                rv_centered="true">
+
+                <TextView
+                    android:id="@+id/equal_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textSize="30sp"
+                    android:textColor="#fff"
+                    android:fontFamily="sans-serif-light"
+                    android:text="="/>
+
+            </com.andexert.library.RippleView>
 
         </LinearLayout>
 
@@ -215,59 +351,102 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="6dp"
             android:layout_weight="1"
             android:weightSum="4"
             android:background="#3E4C66">
 
-            <TextView
-                android:id="@+id/add_tv"
+            <com.andexert.library.RippleView
+                android:id="@+id/ripple13"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:gravity="center"
-                android:textSize="24sp"
-                android:textColor="#fff"
-                android:fontFamily="sans-serif-light"
-                android:text="+"/>
+                android:layout_margin="5dp"
+                app:rv_rippleDuration="200"
+                app:rv_ripplePadding="6dp"
+                rv_centered="true">
 
-            <TextView
-                android:id="@+id/minus_tv"
+                <TextView
+                    android:id="@+id/add_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textSize="24sp"
+                    android:textColor="#fff"
+                    android:fontFamily="sans-serif-light"
+                    android:text="+"/>
+
+            </com.andexert.library.RippleView>
+
+
+            <com.andexert.library.RippleView
+                android:id="@+id/ripple14"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:gravity="center"
-                android:textSize="36sp"
-                android:textColor="#fff"
-                android:fontFamily="sans-serif-light"
-                android:text="-"/>
+                android:layout_margin="5dp"
+                app:rv_rippleDuration="200"
+                app:rv_ripplePadding="6dp"
+                rv_centered="true">
 
-            <TextView
-                android:id="@+id/multiply_tv"
+                <TextView
+                    android:id="@+id/minus_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textSize="36sp"
+                    android:textColor="#fff"
+                    android:fontFamily="sans-serif-light"
+                    android:text="-"/>
+
+            </com.andexert.library.RippleView>
+
+            <com.andexert.library.RippleView
+                android:id="@+id/ripple15"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:gravity="center"
-                android:textSize="24sp"
-                android:textColor="#fff"
-                android:fontFamily="sans-serif-light"
-                android:text="*"/>
+                android:layout_margin="5dp"
+                app:rv_rippleDuration="200"
+                app:rv_ripplePadding="6dp"
+                rv_centered="true">
 
-            <TextView
-                android:id="@+id/division_tv"
+                <TextView
+                    android:id="@+id/multiply_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textSize="24sp"
+                    android:textColor="#fff"
+                    android:fontFamily="sans-serif-light"
+                    android:text="*"/>
+
+            </com.andexert.library.RippleView>
+
+
+            <com.andexert.library.RippleView
+                android:id="@+id/ripple16"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
-                android:layout_height="00dp"
-                android:gravity="center"
-                android:textSize="24sp"
-                android:textColor="#fff"
-                android:fontFamily="sans-serif-light"
-                android:text="÷"/>
+                android:layout_height="0dp"
+                android:layout_margin="5dp"
+                app:rv_rippleDuration="200"
+                app:rv_ripplePadding="6dp"
+                rv_centered="true">
+
+                <TextView
+                    android:id="@+id/division_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textSize="24sp"
+                    android:textColor="#fff"
+                    android:fontFamily="sans-serif-light"
+                    android:text="÷"/>
+
+            </com.andexert.library.RippleView>
 
         </LinearLayout>
 
-
     </LinearLayout>
-
 
 </LinearLayout>
