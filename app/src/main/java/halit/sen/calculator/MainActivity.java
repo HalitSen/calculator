@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
     private double number2 = 0.0;
     private boolean isSquareRoot = false;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,63 +70,43 @@ public class MainActivity extends AppCompatActivity {
         switch (view.getId()) {
 
             case R.id.zero_tv:
-
                 inputText.setText(inputText.getText().toString() + "0");
-
                 break;
 
             case R.id.one_tv:
-
                 inputText.setText(inputText.getText().toString() + "1");
-
                 break;
 
             case R.id.two_tv:
-
                 inputText.setText(inputText.getText().toString() + "2");
-
                 break;
 
             case R.id.three_tv:
-
                 inputText.setText(inputText.getText().toString() + "3");
-
                 break;
 
             case R.id.four_tv:
-
                 inputText.setText(inputText.getText().toString() + "4");
-
                 break;
 
             case R.id.five_tv:
-
                 inputText.setText(inputText.getText().toString() + "5");
-
                 break;
 
             case R.id.six_tv:
-
                 inputText.setText(inputText.getText().toString() + "6");
-
                 break;
 
             case R.id.seven_tv:
-
                 inputText.setText(inputText.getText().toString() + "7");
-
                 break;
 
             case R.id.eight_tv:
-
                 inputText.setText(inputText.getText().toString() + "8");
-
                 break;
 
             case R.id.nine_tv:
-
                 inputText.setText(inputText.getText().toString() + "9");
-
                 break;
 
             case R.id.add_tv:
@@ -136,149 +116,109 @@ public class MainActivity extends AppCompatActivity {
 
                         if (inputText.getText().toString().isEmpty()) {
                             number1 = 0.0;
-                            //TODO do nothing
+                            // do nothing
                         } else {
                             number1 = Double.parseDouble(inputText.getText().toString());
                             resultText.setText(inputText.getText().toString() + " +");
                             inputText.setText(null);
                         }
-
                     } else if (isResultHasOperator(resultText)) {
-
-                        String temp = resultText.getText().toString();
-                        StringBuilder sb = new StringBuilder(temp);
-                        sb.deleteCharAt(temp.length() - 1);
-                        String newStr = sb.toString();
-                        newStr = newStr.trim();
-                        newStr = newStr + " +";
-                        resultText.setText(newStr);
-
+                        resultText.setText(updateResultText(resultText) + " +");
                     } else {
                         number1 = Double.parseDouble(resultText.getText().toString());
                         resultText.setText(resultText.getText().toString() + " +");
                         inputText.setText(null);
                     }
-
                 } else {
-                    //TODO do nothing
+                    // do nothing
                 }
                 break;
 
             case R.id.minus_tv:
 
-                if (resultText.getText().toString().isEmpty()) {
-
-                    if (inputText.getText().toString().isEmpty()) {
-                        number1 = 0.0;
+                if (!isSquareRoot) {
+                    if (resultText.getText().toString().isEmpty()) {
+                        if (inputText.getText().toString().isEmpty()) {
+                            number1 = 0.0;
+                        } else {
+                            number1 = Double.parseDouble(inputText.getText().toString());
+                            resultText.setText(inputText.getText().toString() + " -");
+                            inputText.setText(null);
+                        }
+                    } else if (isResultHasOperator(resultText)) {
+                        resultText.setText(updateResultText(resultText) + " -");
                     } else {
-                        number1 = Double.parseDouble(inputText.getText().toString());
-                        resultText.setText(inputText.getText().toString() + " -");
+                        number1 = Double.parseDouble(resultText.getText().toString());
+                        resultText.setText(resultText.getText().toString() + " -");
                         inputText.setText(null);
                     }
-
-                } else if (isResultHasOperator(resultText)) {
-                    String temp = resultText.getText().toString();
-                    StringBuilder sb = new StringBuilder(temp);
-                    sb.deleteCharAt(temp.length() - 1);
-                    String newStr = sb.toString();
-                    newStr = newStr.trim();
-                    newStr = newStr + " -";
-                    resultText.setText(newStr);
-
                 } else {
-                    number1 = Double.parseDouble(resultText.getText().toString());
-                    resultText.setText(resultText.getText().toString() + " -");
-                    inputText.setText(null);
+                    // do nothing
                 }
-
                 break;
 
             case R.id.division_tv:
 
-                if (resultText.getText().toString().isEmpty()) {
-
-                    if (inputText.getText().toString().isEmpty()) {
-                        number1 = 0.0;
+                if (!isSquareRoot) {
+                    if (resultText.getText().toString().isEmpty()) {
+                        if (inputText.getText().toString().isEmpty()) {
+                            number1 = 0.0;
+                        } else {
+                            number1 = Double.parseDouble(inputText.getText().toString());
+                            resultText.setText(inputText.getText().toString() + " ÷");
+                            inputText.setText(null);
+                        }
+                    } else if (isResultHasOperator(resultText)) {
+                        resultText.setText(updateResultText(resultText) + " ÷");
                     } else {
-                        number1 = Double.parseDouble(inputText.getText().toString());
-                        resultText.setText(inputText.getText().toString() + " ÷");
+                        number1 = Double.parseDouble(resultText.getText().toString());
+                        resultText.setText(resultText.getText().toString() + " ÷");
                         inputText.setText(null);
                     }
-
-                } else if (isResultHasOperator(resultText)) {
-                    String temp = resultText.getText().toString();
-                    StringBuilder sb = new StringBuilder(temp);
-                    sb.deleteCharAt(temp.length() - 1);
-                    String newStr = sb.toString();
-                    newStr = newStr.trim();
-                    newStr = newStr + " ÷";
-                    resultText.setText(newStr);
-
                 } else {
-                    number1 = Double.parseDouble(resultText.getText().toString());
-                    resultText.setText(resultText.getText().toString() + " ÷");
-                    inputText.setText(null);
+                    // do nothing
                 }
-
                 break;
 
             case R.id.multiply_tv:
 
-                if (resultText.getText().toString().isEmpty()) {
-
-                    if (inputText.getText().toString().isEmpty()) {
-                        number1 = 0.0;
+                if (!isSquareRoot) {
+                    if (resultText.getText().toString().isEmpty()) {
+                        if (inputText.getText().toString().isEmpty()) {
+                            number1 = 0.0;
+                        } else {
+                            number1 = Double.parseDouble(inputText.getText().toString());
+                            resultText.setText(inputText.getText().toString() + " *");
+                            inputText.setText(null);
+                        }
+                    } else if (isResultHasOperator(resultText)) {
+                        resultText.setText(updateResultText(resultText) + " *");
                     } else {
-                        number1 = Double.parseDouble(inputText.getText().toString());
-                        resultText.setText(inputText.getText().toString() + " *");
+                        number1 = Double.parseDouble(resultText.getText().toString());
+                        resultText.setText(resultText.getText().toString() + " *");
                         inputText.setText(null);
                     }
-
-                } else if (isResultHasOperator(resultText)) {
-
-                    String temp = resultText.getText().toString();
-                    StringBuilder sb = new StringBuilder(temp);
-                    sb.deleteCharAt(temp.length() - 1);
-                    String newStr = sb.toString();
-                    newStr = newStr.trim();
-                    newStr = newStr + " *";
-                    resultText.setText(newStr);
-
                 } else {
-                    number1 = Double.parseDouble(resultText.getText().toString());
-                    resultText.setText(resultText.getText().toString() + " *");
-                    inputText.setText(null);
+                    // do nothing
                 }
-
                 break;
 
             case R.id.equal_tv:
 
                 if (isSquareRoot) {
-
                     String temp = inputText.getText().toString();
-
                     StringBuilder sb = new StringBuilder(temp);
-
                     sb.deleteCharAt(0);
-
                     String newStr = sb.toString();
-
                     Double num = Double.parseDouble(newStr);
-
                     num = (Math.sqrt(num));
-
                     resultText.setText(String.valueOf(num));
                     inputText.setText(null);
 
                 } else {
-
                     if (inputText.getText().toString().isEmpty() || resultText.getText().toString().isEmpty()) {
-
                         Toast.makeText(this, "Nothing to calculate", Toast.LENGTH_SHORT).show();
-
                     } else {
-
                         number2 = Double.parseDouble(inputText.getText().toString());
                         Character operation = resultText.getText().charAt(resultText.getText().length() - 1);
                         calculate(operation, number1, number2);
@@ -289,11 +229,14 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.delete_tv:
 
-                //TODO eğer input boşsa resultu da temizlesin. input boş değilse tek tek inputu basamak basamak silsin.
-                // input temizlenirse eğer resultu da silsin
-
-                inputText.setText(null);
+                if(inputText.getText().toString().isEmpty()){
                 resultText.setText(null);
+                }else if(inputText.getText().toString().length()>0){
+                    CharSequence name = inputText.getText().toString();
+                    inputText.setText(name.subSequence(0, name.length()-1));
+                }else{
+                    inputText.setText(null);
+                }
                 isSquareRoot = false;
                 break;
 
@@ -304,15 +247,13 @@ public class MainActivity extends AppCompatActivity {
                         resultText.setText(null);
                         inputText.setText("√");
                     } else {
-                        // zaten kök alıyo bişey yapmaya gerek yok
+                        // do nothing
                     }
                 } else {
                     inputText.setText("√");
                     resultText.setText(null);
                 }
-
                 isSquareRoot = true;
-
                 break;
             default:
                 break;
@@ -321,81 +262,31 @@ public class MainActivity extends AppCompatActivity {
 
     private void calculate(Character operation, Double num1, Double num2) {
 
-        //TODO diğer işlemleri yapınca burayı switch case e al
-        if (operation == '+') {
+        Double result = 0.0;
 
-            Double result = num1 + num2;
+        switch (operation) {
+            case '+':
+                result = num1 + num2;
+                break;
 
-            resultText.setText(result.toString());
-            inputText.setText(null);
+            case '-':
+                result = num1 - num2;
+                break;
 
+            case '*':
+                result = num1 * num2;
+                break;
 
-            String temp = resultText.getText().toString();
+            case '÷':
+                result = num1 / num2;
+                break;
 
-            StringBuilder sb = new StringBuilder(temp);
-
-            sb.deleteCharAt(temp.length() - 1);
-
-            String newStr = sb.toString();
-
-            newStr = newStr.trim();
-
-            number1 = Double.parseDouble(newStr);
-
-        } else if (operation == '-') {
-            Double result = num1 - num2;
-
-            resultText.setText(result.toString());
-            inputText.setText(null);
-
-
-            String temp = resultText.getText().toString();
-
-            StringBuilder sb = new StringBuilder(temp);
-
-            sb.deleteCharAt(temp.length() - 1);
-
-            String newStr = sb.toString();
-
-            newStr = newStr.trim();
-
-            number1 = Double.parseDouble(newStr);
-        } else if (operation == '÷') {
-            Double result = num1 / num2;
-
-            resultText.setText(result.toString());
-            inputText.setText(null);
-
-            String temp = resultText.getText().toString();
-
-            StringBuilder sb = new StringBuilder(temp);
-
-            sb.deleteCharAt(temp.length() - 1);
-
-            String newStr = sb.toString();
-
-            newStr = newStr.trim();
-
-            number1 = Double.parseDouble(newStr);
-
-        } else if (operation == '*') {
-            Double result = num1 * num2;
-
-            resultText.setText(result.toString());
-            inputText.setText(null);
-
-            String temp = resultText.getText().toString();
-
-            StringBuilder sb = new StringBuilder(temp);
-
-            sb.deleteCharAt(temp.length() - 1);
-
-            String newStr = sb.toString();
-
-            newStr = newStr.trim();
-
-            number1 = Double.parseDouble(newStr);
+            default:
+                break;
         }
+        number1 = Double.parseDouble(saveNumberOne(resultText));
+        resultText.setText(result.toString());
+        inputText.setText(null);
     }
 
     private boolean isResultHasOperator(TextView result) {
@@ -404,17 +295,31 @@ public class MainActivity extends AppCompatActivity {
 
             case '+':
                 return true;
-
             case '-':
                 return true;
-
             case '*':
                 return true;
-
             case '÷':
                 return true;
             default:
                 return false;
         }
+    }
+
+    private String saveNumberOne(TextView result) {
+        String temp = result.getText().toString();
+        StringBuilder sb = new StringBuilder(temp);
+        sb.deleteCharAt(temp.length() - 1);
+        String number = sb.toString();
+        number = number.trim();
+        return number;
+    }
+
+    private String updateResultText(TextView result) {
+        String temp = result.getText().toString();
+        StringBuilder sb = new StringBuilder(temp);
+        sb.deleteCharAt(temp.length() - 1);
+        String newStr = sb.toString();
+        return newStr.trim();
     }
 }
