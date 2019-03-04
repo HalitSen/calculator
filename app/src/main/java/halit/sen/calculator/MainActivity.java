@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -48,8 +49,11 @@ public class MainActivity extends AppCompatActivity {
     TextView inputText;
     @BindView(R.id.result_tv)
     TextView resultText;
+    @BindView(R.id.square_root_tv)
+    TextView quareRootText;
     private double number1 = 0.0;
     private double number2 = 0.0;
+    private boolean isSquareRoot = false;
 
 
     @Override
@@ -60,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @OnClick({R.id.zero_tv, R.id.one_tv, R.id.two_tv, R.id.three_tv, R.id.four_tv, R.id.five_tv, R.id.six_tv, R.id.seven_tv,
-            R.id.eight_tv, R.id.nine_tv, R.id.add_tv, R.id.minus_tv, R.id.multiply_tv, R.id.division_tv, R.id.equal_tv, R.id.delete_tv})
+            R.id.eight_tv, R.id.nine_tv, R.id.add_tv, R.id.minus_tv, R.id.multiply_tv, R.id.division_tv, R.id.equal_tv, R.id.delete_tv, R.id.square_root_tv})
     public void onViewClicked(View view) {
 
         switch (view.getId()) {
@@ -127,33 +131,37 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.add_tv:
 
-                if (resultText.getText().toString().isEmpty()) {
+                if (!isSquareRoot) {
+                    if (resultText.getText().toString().isEmpty()) {
 
-                    if (inputText.getText().toString().isEmpty()) {
-                        number1 = 0.0;
-                        //TODO toast  nothing to add
+                        if (inputText.getText().toString().isEmpty()) {
+                            number1 = 0.0;
+                            //TODO do nothing
+                        } else {
+                            number1 = Double.parseDouble(inputText.getText().toString());
+                            resultText.setText(inputText.getText().toString() + " +");
+                            inputText.setText(null);
+                        }
+
+                    } else if (isResultHasOperator(resultText)) {
+
+                        String temp = resultText.getText().toString();
+                        StringBuilder sb = new StringBuilder(temp);
+                        sb.deleteCharAt(temp.length() - 1);
+                        String newStr = sb.toString();
+                        newStr = newStr.trim();
+                        newStr = newStr + " +";
+                        resultText.setText(newStr);
+
                     } else {
-                        number1 = Double.parseDouble(inputText.getText().toString());
-                        resultText.setText(inputText.getText().toString() + " +");
+                        number1 = Double.parseDouble(resultText.getText().toString());
+                        resultText.setText(resultText.getText().toString() + " +");
                         inputText.setText(null);
                     }
 
-                } else if (isResultHasOperator(resultText)) {
-
-                    String temp = resultText.getText().toString();
-                    StringBuilder sb = new StringBuilder(temp);
-                    sb.deleteCharAt(temp.length() - 1);
-                    String newStr = sb.toString();
-                    newStr = newStr.trim();
-                    newStr = newStr + " +";
-                    resultText.setText(newStr);
-
                 } else {
-                    number1 = Double.parseDouble(resultText.getText().toString());
-                    resultText.setText(resultText.getText().toString() + " +");
-                    inputText.setText(null);
+                    //TODO do nothing
                 }
-
                 break;
 
             case R.id.minus_tv:
@@ -169,8 +177,6 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                 } else if (isResultHasOperator(resultText)) {
-
-                    //TODO bu operator + değilse + yap
                     String temp = resultText.getText().toString();
                     StringBuilder sb = new StringBuilder(temp);
                     sb.deleteCharAt(temp.length() - 1);
@@ -248,20 +254,37 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.equal_tv:
 
-                if (inputText.getText().toString().isEmpty() || resultText.getText().toString().isEmpty()) {
+                if (isSquareRoot) {
 
-                    //TODO toast  nothing to calculate
+                    String temp = inputText.getText().toString();
+
+                    StringBuilder sb = new StringBuilder(temp);
+
+                    sb.deleteCharAt(0);
+
+                    String newStr = sb.toString();
+
+                    Double num = Double.parseDouble(newStr);
+
+                    num = (Math.sqrt(num));
+
+                    resultText.setText(String.valueOf(num));
+                    inputText.setText(null);
 
                 } else {
 
-                    number2 = Double.parseDouble(inputText.getText().toString());
+                    if (inputText.getText().toString().isEmpty() || resultText.getText().toString().isEmpty()) {
 
-                    Character operation = resultText.getText().charAt(resultText.getText().length() - 1);
+                        Toast.makeText(this, "Nothing to calculate", Toast.LENGTH_SHORT).show();
 
-                    calculate(operation, number1, number2);
+                    } else {
 
+                        number2 = Double.parseDouble(inputText.getText().toString());
+                        Character operation = resultText.getText().charAt(resultText.getText().length() - 1);
+                        calculate(operation, number1, number2);
+                    }
                 }
-
+                isSquareRoot = false;
                 break;
 
             case R.id.delete_tv:
@@ -271,6 +294,27 @@ public class MainActivity extends AppCompatActivity {
 
                 inputText.setText(null);
                 resultText.setText(null);
+                isSquareRoot = false;
+                break;
+
+            case R.id.square_root_tv:
+
+                if (!inputText.getText().toString().isEmpty()) {
+                    if (inputText.getText().charAt(0) != '√') {
+                        resultText.setText(null);
+                        inputText.setText("√");
+                    } else {
+                        // zaten kök alıyo bişey yapmaya gerek yok
+                    }
+                } else {
+                    inputText.setText("√");
+                    resultText.setText(null);
+                }
+
+                isSquareRoot = true;
+
+                break;
+            default:
                 break;
         }
     }
@@ -316,8 +360,7 @@ public class MainActivity extends AppCompatActivity {
             newStr = newStr.trim();
 
             number1 = Double.parseDouble(newStr);
-        }
-        else if(operation =='÷'){
+        } else if (operation == '÷') {
             Double result = num1 / num2;
 
             resultText.setText(result.toString());
@@ -335,7 +378,7 @@ public class MainActivity extends AppCompatActivity {
 
             number1 = Double.parseDouble(newStr);
 
-        }else if(operation =='*'){
+        } else if (operation == '*') {
             Double result = num1 * num2;
 
             resultText.setText(result.toString());
@@ -355,9 +398,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private boolean isResultHasOperator(TextView result){
+    private boolean isResultHasOperator(TextView result) {
 
-        switch (result.getText().charAt(result.getText().length()-1)){
+        switch (result.getText().charAt(result.getText().length() - 1)) {
 
             case '+':
                 return true;
@@ -373,24 +416,5 @@ public class MainActivity extends AppCompatActivity {
             default:
                 return false;
         }
-    }
-
-
-    private char getOperator(TextView resultText){
-
-       char op = resultText.getText().charAt(resultText.getText().length() - 1);
-
-       switch (op){
-           case '+':
-               return '+';
-           case '*':
-               return '*';
-           case '-':
-               return '-';
-           case '÷':
-               return '÷';
-               default:
-                   return '+';
-       }
     }
 }
